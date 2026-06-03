@@ -1,13 +1,8 @@
-import express, { Request, Response } from 'express';
+import 'dotenv/config.js';
+import App from '@/app.js';
+import IndexRoute from '@/module/index/index.route.js';
 
-const port = process.env.PORT || 3000;
+const routes = [new IndexRoute()];
+const app = new App(routes);
 
-const app = express();
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen();
